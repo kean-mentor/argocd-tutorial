@@ -20,4 +20,10 @@ spec:
           image: docker.io/keanmentor/getting-started
           imagePullPolicy: "Always"
           ports:
+            # The containerPort is the port that a container within a pod listends on for traffic.
+            # The containerPort of a container within a pod must match the targetPort set within any
+            # service that points to that pod. In other words, traffic routed by a service to a relevant
+            # pod is sent to the targetPort and that pod then knows to route that traffic to the matching
+            # containerPort on whatever container is using that port.
+            # https://stackoverflow.com/questions/69587845/relationship-between-dockerfile-expose-and-kubernetes-service-container-ports
             - containerPort: 8000
