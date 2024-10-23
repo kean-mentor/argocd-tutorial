@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kean-demo-app
+  labels:
+    app: kean-demo-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kean-demo-app
+  template:
+    metadata:
+      labels:
+        app: kean-demo-app
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: kean-demo-app
+          image: docker.io/keanmentor/getting-started
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 8000
